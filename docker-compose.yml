@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  phoenix:
+    build: .
+    container_name: elixir-ex-mon
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./src:/app
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: postgress
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
